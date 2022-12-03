@@ -24,7 +24,7 @@ public class FirebaseTemplateDemo {
 
         //fetching using lambda,removing { },because of single statement
         firebaseCustom.getAllDocumentName("DistrictList", list ->
-                Log.i("Fetched-AllDocumentName" + " of -> " + "DistrictList", String.valueOf(list)));
+                Log.i("Fetched-AllDocumentName", String.valueOf(list)));
 
     }
 
@@ -32,7 +32,7 @@ public class FirebaseTemplateDemo {
         FirebaseCustom firebaseCustom = new DatabaseFetch();
         //collectionName=DistrictList ,documentId/Name=Dhaka
         firebaseCustom.getDocument("DistrictList", "Dhaka", doc ->
-                Log.i("Fetched-Document" + " of -> " + "DistrictList ,Document ->" + "Dhaka", String.valueOf(doc)));
+                Log.i("Fetched-Document", String.valueOf(doc)));
     }
 
     public void demoFetDocumentField() {
@@ -40,7 +40,7 @@ public class FirebaseTemplateDemo {
         //collectionName=DistrictList ,documentId/Name=Dhaka
         //documentName/Id=jahidrana190153cse@gmail.com ,fieldName=Name
         firebaseCustom.getDocumentField("UserInfo", "jahidrana190153cse@gmail.com", "Name", fieldValue ->
-                Log.i("Fetched-Document" + " of -> " + "DistrictList ,Document=" + "jahidrana190153cse@gmail.com ,FieldValue ->", String.valueOf(fieldValue)));
+                Log.i("Fetched-Document ,jahidrana190153cse@gmail.com ,FieldValue ->", String.valueOf(fieldValue)));
 
     }
 
@@ -82,7 +82,7 @@ public class FirebaseTemplateDemo {
         //field(array/list)Name=subjectList ,arrayNewElement=Math
         //Note:array element can be any type(primitive or complex) as defined in the database
         //where we use array filed data type string so we are going to pass a string("Math)
-        firebaseCustom.deleteArrayItem("ClassInfo", "one", "subject", "Math");
+        firebaseCustom.deleteArrayItem("ClassList", "One", "subject", "Math");
     }
 
     public void demoDeleteDocument() {
