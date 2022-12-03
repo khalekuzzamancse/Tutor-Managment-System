@@ -26,11 +26,11 @@ public class DatabaseFetch implements FirebaseCustom {
     FirebaseFirestore db;
     FirebaseAuth auth;
     FirebaseUser user;
-    private String doc = "", collection = "", fieldName = "";
+    private String fieldName = "";
     private List<String> allDocumentNameList;
     CallbackDatabase doctListCallback;
     CallbackDocument callbackDoc;
-    CallBackDocumentField callbackDocumentField;
+    CallbackDocumentField callbackDocumentField;
 
     public DatabaseFetch() {
         db = FirebaseFirestore.getInstance();
@@ -70,7 +70,7 @@ public class DatabaseFetch implements FirebaseCustom {
                 }
                 //Log.i("FETCHED_District", String.valueOf(districtList));
                 doctListCallback.getList(allDocumentNameList);
-                //making the list empty or null so that exitsing data will remove
+                //making the list empty or null so that existing data will remove
                 if (allDocumentNameList != null) {
                     allDocumentNameList.clear();
                 }
@@ -91,21 +91,18 @@ public class DatabaseFetch implements FirebaseCustom {
         fetchDocument(collectionName, documentName, callbackDocSnapShot);
     }
 
-    public void getDocumentField(String collectionName, String documentName, String fieldName, CallBackDocumentField callBackDocumentField) {
+    public void getDocumentField(String collectionName, String documentName, String fieldName, CallbackDocumentField callBackDocumentField) {
         this.fieldName = fieldName;
         this.callbackDocumentField = callBackDocumentField;
         fetchDocument(collectionName, documentName, callbackDocFieldSnapShot);
     }
 
 
-    OnCompleteListener<Void> callbackAddDoc = new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            if (!task.isSuccessful())
-                ;//do something
-            else
-                ;//do something
-        }
+    OnCompleteListener<Void> callbackAddDoc = task -> {
+        if (!task.isSuccessful())
+            ;//do something
+        else
+            ;//do something
     };
 
     public void addDocument(String collectionName, String documentName, HashMap<String, Object> doc) {

@@ -7,7 +7,7 @@ public interface FirebaseCustom {
 
     public void getDocument(String collectionName, String documentName, CallbackDocument callbackDoc);
 
-    public void getDocumentField(String collectionName, String documentName, String fieldName, CallBackDocumentField callbackDoc);
+    public void getDocumentField(String collectionName, String documentName, String fieldName, CallbackDocumentField callbackDoc);
 
     public void addDocument(String collectionName, String documentName, HashMap<String, Object> doc);
 
