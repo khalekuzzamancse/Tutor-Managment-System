@@ -3,7 +3,6 @@ package com.example.blooddonation.firebasetemplate;
 import android.util.Log;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class FirebaseTemplateDemo {
     //demo for get the name off all document name of a collection
