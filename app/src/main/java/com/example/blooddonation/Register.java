@@ -31,7 +31,7 @@ import java.util.Objects;
 
 public class Register extends AppCompatActivity {
     private ProgressBar p;
-    EditText nameET, emailET, phoneET, passwordET;
+    EditText nameET, emailET, phoneET, passwordET, userNameET;
     LinearLayout teacherInfoContainer;
     String userType = "";
     AutoCompleteTextView registrationAsACTV, districtACTV, classACTV, subjectACTV;
@@ -42,20 +42,13 @@ public class Register extends AppCompatActivity {
     Toolbar toolbar;
     Button submitBTN, cancelBTN;
     FormFillUpInfo fillUpInfo;
+    String nameStr, phoneStr, emailStr, userNameStr, classNameStr, districtStr, passwordStr, subjectStr;
 
-    CallbackStringList callbackClassList = list -> {
-        setClassList(list);
-        Log.i("LISTTTTT", String.valueOf(list));
-
-    };
+    CallbackStringList callbackClassList = this::setClassList;
     CallbackStringList callbackSubjectList = list -> {
         subjectAdapter = new ArrayAdapter<>(this, R.layout.layout_drop_down_menu_single_item, list);
         subjectACTV.setAdapter(subjectAdapter);
-        Log.i("SubejctList", String.valueOf(list));
     };
-
-
-
 
 
     @Override
@@ -77,14 +70,20 @@ public class Register extends AppCompatActivity {
         fillUpInfo.getClassList(callbackClassList);
 
 
-
         registrationAsACTV.setOnItemClickListener((parent, view, position, id) -> {
             userType = parent.getItemAtPosition(position).toString();
             if (userType.equals("Teacher")) {
                 teacherInfoContainer.setVisibility(View.VISIBLE);
                 //  fillUpInfo.getClassList(callbackClassList);
-            } else
+            } else {
                 teacherInfoContainer.setVisibility(View.GONE);
+            }
+
+        });
+        submitBTN.setOnClickListener(view -> {
+            if (userType.equals("Student"))
+                clearTeacherInfo();
+            setUserInfo();
         });
 
 
@@ -119,6 +118,7 @@ public class Register extends AppCompatActivity {
         districtACTV = findViewById(R.id.districtACTV);
         teacherInfoContainer = findViewById(R.id.teacherInfoContainer);
         fillUpInfo = new FormFillUpInfo();
+        userNameET = findViewById(R.id.userNameET);
 
     }
 
@@ -147,10 +147,48 @@ public class Register extends AppCompatActivity {
         classACTV.setOnItemClickListener((parent, view, position, id) -> {
 
             String className = parent.getItemAtPosition(position).toString();
-            Log.i("ClassSS",className);
+            Log.i("ClassSS", className);
             fillUpInfo.getSubjectList(className, callbackSubjectList);
 
         });
+    }
+
+
+    private void setUserInfo() {
+        getUserInfo();
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("name", nameStr);
+        data.put("phoneNo", phoneStr);
+        data.put("email", emailStr);
+        data.put("userName", userNameStr);
+        data.put("userType", userType);
+        data.put("class", classNameStr);
+        data.put("subject", subjectStr);
+        data.put("district", districtStr);
+        data.put("password", passwordStr);
+        Log.i("UserData", String.valueOf(data));
+
+    }
+
+    private void getUserInfo() {
+        nameStr = nameET.getText().toString();
+        phoneStr = phoneET.getText().toString();
+        emailStr = emailET.getText().toString();
+        userNameStr = userNameET.getText().toString();
+        passwordStr = passwordET.getText().toString();
+        if(userType.equals("Teacher"))
+        {
+            classNameStr = classACTV.getText().toString();
+            districtStr = districtACTV.getText().toString();
+            subjectStr = subjectACTV.getText().toString();
+        }
+
+    }
+
+    private void clearTeacherInfo() {
+        classNameStr = "";
+        subjectStr = "";
+        districtStr = "";
     }
 
 
