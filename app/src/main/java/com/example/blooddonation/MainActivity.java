@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.ActivityMain_NavDrawerMenu_Login) {
-                    Intent intent = new Intent(MainActivity.this, Activity_Login.class);
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } else if (id == R.id.ActivityMain_NavDrawerMenu_BecomeADonor) {
                     Intent intent = new Intent(MainActivity.this, Activity_Become_Tutor.class);

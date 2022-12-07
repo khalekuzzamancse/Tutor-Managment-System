@@ -58,9 +58,9 @@
         <activity
             android:name=".Register"
             android:exported="false"
-            android:parentActivityName=".Activity_Login" />
+            android:parentActivityName=".LoginActivity" />
         <activity
-            android:name=".Activity_Login"
+            android:name=".LoginActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

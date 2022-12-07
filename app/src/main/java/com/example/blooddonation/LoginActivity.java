@@ -19,11 +19,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Activity_Login extends AppCompatActivity {
-private   ProgressBar p;
+public class LoginActivity extends AppCompatActivity {
+    private ProgressBar p;
     Button register;
     Toolbar toolbar;
-public static String Extra_Login="null";
+    public static String Extra_Login = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,30 +31,31 @@ public static String Extra_Login="null";
         setContentView(R.layout.activity_login_scrolable);
 
 
-       toolbar =findViewById(R.id.NonHomeActivity_Toolbar);
+        toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Login");
 
 
-        register=findViewById(R.id.ActivityLogin_Button_Register);
-        register.setOnClickListener((view)->{
-            Intent intent=new Intent(this, Register.class);
+        register = findViewById(R.id.ActivityLogin_Button_Register);
+        register.setOnClickListener((view) -> {
+            Intent intent = new Intent(this, Register.class);
             startActivity(intent);
         });
-        Button login=findViewById(R.id.ActivityLogin_Button_Login);
+        Button login = findViewById(R.id.ActivityLogin_Button_Login);
         login.setOnClickListener(view -> {
 
-            p=findViewById(R.id.ActivityLogin_ProgessBar);
-          p.setVisibility(View.VISIBLE);
-            EditText Email=findViewById(R.id.ActivityLogin_EditText_Email);
-            EditText PassWord=findViewById(R.id.ActivityLogin_TextInputLayout_EditText_Password);
-            String email=Email.getText().toString().trim();
-            String password=PassWord.getText().toString().trim();
-            Login(email,password);
+            p = findViewById(R.id.ActivityLogin_ProgessBar);
+            p.setVisibility(View.VISIBLE);
+            EditText Email = findViewById(R.id.ActivityLogin_EditText_Email);
+            EditText PassWord = findViewById(R.id.ActivityLogin_TextInputLayout_EditText_Password);
+            String email = Email.getText().toString().trim();
+            String password = PassWord.getText().toString().trim();
+            Login(email, password);
         });
 //Insha-allah
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -64,31 +65,26 @@ public static String Extra_Login="null";
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
+        int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }
 
 
-
-    private void Login(String email,String password)
-    {
-        FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        mAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener((Task<AuthResult> task)->{
-                    if(!task.isSuccessful())
-                    {
+    private void Login(String email, String password) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Task<AuthResult> task) -> {
+                    if (!task.isSuccessful()) {
                         //Log.i("Curr Logined","Next,Inshallah");
                         ;
-                    }
-                    else
-                    {
+                    } else {
 
-                       // Log.i("Curr Logined","Alhaumdulliah");
+                        // Log.i("Curr Logined","Alhaumdulliah");
                         FirebaseUser user = mAuth.getCurrentUser();
-                       p.setVisibility(View.INVISIBLE);
-                        Intent i= new Intent(this, MainActivity.class);
-                        i.putExtra(MainActivity.Extra_Login,"FromLogin");
+                        p.setVisibility(View.INVISIBLE);
+                        Intent i = new Intent(this, MainActivity.class);
+                        i.putExtra(MainActivity.Extra_Login, "FromLogin");
                         startActivity(i);
 
 
@@ -98,12 +94,11 @@ public static String Extra_Login="null";
 
     @Override
     protected void onResume() {
-        Intent intent=getIntent();
-        Intent i=getIntent();
-        String s= i.getStringExtra(MainActivity.Extra_Login);
-        if(s!=null&&s.equals("FromRegister"))
-        {
-            Snackbar.make(toolbar,"Registered Successfully",Snackbar.LENGTH_SHORT).show();
+        Intent intent = getIntent();
+        Intent i = getIntent();
+        String s = i.getStringExtra(MainActivity.Extra_Login);
+        if (s != null && s.equals("FromRegister")) {
+            Snackbar.make(toolbar, "Registered Successfully", Snackbar.LENGTH_SHORT).show();
         }
         super.onResume();
     }

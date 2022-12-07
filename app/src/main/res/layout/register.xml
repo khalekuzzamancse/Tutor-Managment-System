@@ -18,13 +18,13 @@
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/icon_person"
       >
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Name"
+            android:id="@+id/name_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:maxLines="1"
+            android:hint="Name"
             android:textColor="@color/black"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -40,8 +40,7 @@
    >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_margin="8dp"
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Email"
+            android:id="@+id/email_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -61,7 +60,7 @@
        >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_PhoneNumber"
+            android:id="@+id/phone_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -90,6 +89,7 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_margin="8dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -98,7 +98,7 @@
         android:hint="Register As" >
 
         <AutoCompleteTextView
-            android:id="@+id/dropdown"
+            android:id="@+id/registerAs_ACTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -107,33 +107,51 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
     <LinearLayout
-        android:id="@+id/Container"
+        android:background="#C5F8F3"
+        android:visibility="gone"
+        android:id="@+id/teacherInfoContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_margin="8dp"
-            style="@style/TextInputLayout"
-            app:startIconDrawable="@drawable/ic_class"
-            android:hint="Class">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/class_name"
-                style="@style/TextInputEditText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/icon_locaion"
+            android:hint="Class"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/class_ACTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:maxLines="1"
+                android:textColor="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            style="@style/TextInputLayout"
             app:startIconDrawable="@drawable/ic_subject"
             android:hint="Subject">
 
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:id="@+id/subjectET"
-                style="@style/TextInputEditText"
+            <AutoCompleteTextView
+                android:id="@+id/subject_ACTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:maxLines="1"
+                android:textColor="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +165,7 @@
            >
 
             <AutoCompleteTextView
-                android:id="@+id/districtACT"
+                android:id="@+id/districtACTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -172,7 +190,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Activity_Register_TextInputLayout_EditText_Password"
+            android:id="@+id/password_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -202,22 +220,24 @@
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <androidx.appcompat.widget.AppCompatButton
+            android:layout_margin="16dp"
             android:layout_weight="1"
-           android:layout_margin="50dp"
-            android:id="@+id/Activity_Register_Button_Submit"
-            android:layout_width="wrap_content"
+            android:id="@+id/submit_BTN"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:textAllCaps="false"
            />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/Activity_Register_Button_Cancel"
-            android:layout_width="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:id="@+id/cancel_BTN"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="Cancel"
