@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ActivityScrollable_IncludedToolbar">
 
         <include
-            layout="@layout/activity_login"
+            layout="@layout/login_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

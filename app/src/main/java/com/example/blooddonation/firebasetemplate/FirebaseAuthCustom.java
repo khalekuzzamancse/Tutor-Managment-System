@@ -63,5 +63,9 @@ public class FirebaseAuthCustom {
     public void registerUser(String email, String password) {
         auth.createUserWithEmailAndPassword(email, password);
     }
+    public void signIn(String email, String password) {
+        auth.signInWithEmailAndPassword(email, password);
+    }
+
 
 }
