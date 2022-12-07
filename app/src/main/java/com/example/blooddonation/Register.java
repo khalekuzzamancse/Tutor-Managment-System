@@ -2,15 +2,14 @@ package com.example.blooddonation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -18,12 +17,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.example.blooddonation.firebasetemplate.CallbackResult;
 import com.example.blooddonation.firebasetemplate.CallbackStringList;
+import com.example.blooddonation.firebasetemplate.FirebaseAuthCustom;
 import com.example.blooddonation.firebasetemplate.FormFillUpInfo;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.blooddonation.firebasetemplate.WritingDocument;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +47,14 @@ public class Register extends AppCompatActivity {
     CallbackStringList callbackSubjectList = list -> {
         subjectAdapter = new ArrayAdapter<>(this, R.layout.layout_drop_down_menu_single_item, list);
         subjectACTV.setAdapter(subjectAdapter);
+    };
+    private CallbackResult result = response -> {
+       // progressBar.setVisibility(View.INVISIBLE);
+        if (response)
+            showSnackBar("Registration Successful");
+        else
+            showSnackBar("Failed");
+
     };
 
 
@@ -83,7 +90,7 @@ public class Register extends AppCompatActivity {
         submitBTN.setOnClickListener(view -> {
             if (userType.equals("Student"))
                 clearTeacherInfo();
-            setUserInfo();
+            doRegistration();
         });
 
 
@@ -154,8 +161,15 @@ public class Register extends AppCompatActivity {
     }
 
 
-    private void setUserInfo() {
+    private void doRegistration() {
+        //order of the calling function is important
         getUserInfo();
+        HashMap<String, Object> data = makeMap();
+        new WritingDocument().updateDocument(emailStr,data,result);
+        new FirebaseAuthCustom().registerUser(emailStr,passwordStr);
+    }
+
+    private HashMap<String, Object> makeMap() {
         HashMap<String, Object> data = new HashMap<>();
         data.put("name", nameStr);
         data.put("phoneNo", phoneStr);
@@ -166,8 +180,7 @@ public class Register extends AppCompatActivity {
         data.put("subject", subjectStr);
         data.put("district", districtStr);
         data.put("password", passwordStr);
-        Log.i("UserData", String.valueOf(data));
-
+        return data;
     }
 
     private void getUserInfo() {
@@ -176,8 +189,7 @@ public class Register extends AppCompatActivity {
         emailStr = emailET.getText().toString();
         userNameStr = userNameET.getText().toString();
         passwordStr = passwordET.getText().toString();
-        if(userType.equals("Teacher"))
-        {
+        if (userType.equals("Teacher")) {
             classNameStr = classACTV.getText().toString();
             districtStr = districtACTV.getText().toString();
             subjectStr = subjectACTV.getText().toString();
@@ -189,6 +201,12 @@ public class Register extends AppCompatActivity {
         classNameStr = "";
         subjectStr = "";
         districtStr = "";
+    }
+    void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(submitBTN, msg, Snackbar.LENGTH_LONG);
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
+        snackbar.show();
     }
 
 
