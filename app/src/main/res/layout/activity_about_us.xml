@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ActivityLayoutAAboutUS"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_AboutUs">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_toolbar_for_non_home_activity" />
+
+    <TextView
+        android:elevation="5dp"
+        android:layout_margin="8dp"
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:background="@drawable/background_about_us"
+        android:justificationMode="inter_word"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="16dp"
+        android:text="The Aboutg or web optiohen the ill know about your company or organization or your business policies.\n\nThis About Us Page Generator tool helps you to create customizable introductory content. Like the company's founder or internal information, year of establishment, when and where this business runs etc. This is an opportunity for your clients to introduce themselves and the form of business they do for his or her customers. Clicking faraway from the homepage, wherein it's far largest wanted for a fast view."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:backgroundTint="#D0223135"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_about_us"
+        android:elevation="10dp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:text="Supervised by Abu Rafe Md. Jamil\nLecturer of CSE,JUST"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:justificationMode="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.251" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
