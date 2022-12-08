@@ -33,10 +33,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".SearchTutors_Activity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".Activity_ContactSendMessage"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

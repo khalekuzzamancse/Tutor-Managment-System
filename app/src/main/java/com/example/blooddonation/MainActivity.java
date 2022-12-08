@@ -14,20 +14,14 @@ import android.view.MenuItem;
 import com.example.blooddonation.firebasetemplate.CallbackUserProfile;
 import com.example.blooddonation.firebasetemplate.DomainUserInfo;
 import com.example.blooddonation.firebasetemplate.FirebaseAuthCustom;
-import com.example.blooddonation.ui.viewmodel.ViewModel_AllDistrictList;
-import com.example.blooddonation.ui.viewmodel.ViewModel_SearchingTutor;
-import com.example.blooddonation.ui.viewmodel.ViewModel_UserProfileInfo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    public static ViewModel_UserProfileInfo model;
-    public static ViewModel_AllDistrictList districtListModel;
-    public static String Extra_Login = "null";
+
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    private ViewModel_SearchingTutor model_searchingBlood;
     FirebaseAuthCustom currentUser;
     DomainUserInfo userInfo;
 
