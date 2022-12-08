@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.blooddonation.firebasetemplate.CallbackResult;
 import com.example.blooddonation.firebasetemplate.CallbackStringList;
@@ -31,13 +32,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class EditProfileActivity extends AppCompatActivity {
-    AutoCompleteTextView  districtACTV, classACTV, subjectACTV;
+    AutoCompleteTextView districtACTV, classACTV, subjectACTV;
     Button submitBTN, cancelBTN;
     EditText nameET, phoneET;
     Toolbar toolbar;
     DomainUserInfo info;
-    ArrayAdapter<String> classAdapter,subjectAdapter,districtAdapter;
+    ArrayAdapter<String> classAdapter, subjectAdapter, districtAdapter;
     FormFillUpInfo fillUpInfo;
+    LinearLayout container;
 
     CallbackStringList callbackClassList = this::setClassList;
     CallbackStringList callbackSubjectList = list -> {
@@ -59,8 +61,8 @@ public class EditProfileActivity extends AppCompatActivity {
         @Override
         public void getProfile(DomainUserInfo profile) {
             info = profile;
-            if(!info.className.isEmpty())
-                hideView();
+            if (info.userType.equals("Student"))
+                container.setVisibility(View.GONE);
             nameET.setText(info.name);
             phoneET.setText(info.phoneNo);
             //if the user is a donor then it have age other wise age is null
@@ -115,13 +117,11 @@ public class EditProfileActivity extends AppCompatActivity {
             updateInfo();
 
         });
-        cancelBTN.setOnClickListener(view->{
+        cancelBTN.setOnClickListener(view -> {
             onBackPressed();
         });
 
     }
-
-
 
 
     @Override
@@ -138,7 +138,6 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
-
     private void initialize() {
         toolbar = findViewById(R.id.NonHomeActivity_Toolbar);
         info = new DomainUserInfo();
@@ -152,6 +151,7 @@ public class EditProfileActivity extends AppCompatActivity {
         //  progressBar = findViewById(R.id.progressBar);
         districtACTV = findViewById(R.id.districtACTV);
         subjectACTV = findViewById(R.id.subject_ACTV);
+        container = findViewById(R.id.teacher_info_container);
 
     }
 
@@ -161,7 +161,6 @@ public class EditProfileActivity extends AppCompatActivity {
         districtAdapter = new ArrayAdapter<>(this, R.layout.layout_drop_down_menu_single_item, list);
         districtACTV.setAdapter(districtAdapter);
     }
-
 
 
     private void setClassList(List<String> list) {
@@ -176,12 +175,6 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void hideView()
-    {
-        classACTV.setVisibility(View.INVISIBLE);
-        subjectACTV.setVisibility(View.INVISIBLE);
-        districtACTV.setVisibility(View.INVISIBLE);
-    }
 
     private void setToolbar() {
 
@@ -189,12 +182,13 @@ public class EditProfileActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Update Profile");
     }
+
     private void updateInfo() {
         HashMap<String, Object> data = new HashMap<>();
-        String name=nameET.getText().toString().trim();
-        data.put("name",name);
-        String phone=phoneET.getText().toString().trim();
-        data.put("phoneNo",phone);
+        String name = nameET.getText().toString().trim();
+        data.put("name", name);
+        String phone = phoneET.getText().toString().trim();
+        data.put("phoneNo", phone);
         String className = classACTV.getText().toString().trim();
         data.put("className", className);
         String dis = districtACTV.getText().toString().trim();
@@ -203,12 +197,14 @@ public class EditProfileActivity extends AppCompatActivity {
         document.updateDocument(info.email, data, callbackResult);
         Log.i("DataGot", String.valueOf(data));
     }
+
     void showSnackBar(String msg) {
         Snackbar snackbar = Snackbar
                 .make(submitBTN, msg, Snackbar.LENGTH_LONG);
         snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.purple_500));
         snackbar.show();
     }
+
     ////replace the back button with navigationUp because
     //1.Main activity read the data from the database
     //2.based on user data some menu item will be hide
