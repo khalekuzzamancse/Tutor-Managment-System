@@ -68,11 +68,11 @@ public class SearchTutors_Activity extends AppCompatActivity {
             if (subDis.equals(""))
                 subDis = "null";
 
-            Intent intent = new Intent(this, Activity_AllUserInfoList.class);
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_bloodGroup, blood);
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_District, dis);
-            intent.putExtra(Activity_AllUserInfoList.EXTRA_SubDistrict, subDis);
-            intent.putExtra(Activity_AllUserInfoList.Extra_ComingFrom, "SearchBlood");//Change later--Sojib
+            Intent intent = new Intent(this, SearchResultActivity.class);
+            intent.putExtra(SearchResultActivity.EXTRA_bloodGroup, blood);
+            intent.putExtra(SearchResultActivity.EXTRA_District, dis);
+            intent.putExtra(SearchResultActivity.EXTRA_SubDistrict, subDis);
+            intent.putExtra(SearchResultActivity.Extra_ComingFrom, "SearchBlood");//Change later--Sojib
             //  p.setVisibility(View.INVISIBLE);
             //if the user not choosen a bloodGroup then we do not show the list
 

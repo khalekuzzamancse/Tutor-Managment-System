@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Activity_AllUserInfoList extends AppCompatActivity {
+public class SearchResultActivity extends AppCompatActivity {
     public static final String EXTRA_bloodGroup = "BloodGroup";
     public static final String EXTRA_District = "District";
     public static final String EXTRA_SubDistrict = "SubDistrict";
@@ -311,9 +311,9 @@ public class Activity_AllUserInfoList extends AppCompatActivity {
     void updateAdapter(List<AllUserInfoListActivity_DataType>List)
     {
         //Log.i("USEALL", String.valueOf(stringHashMapHashMap));
-        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(Activity_AllUserInfoList.this, List);
+        AllUserInfoListActivity_Adapter adapter = adapter = new AllUserInfoListActivity_Adapter(SearchResultActivity.this, List);
         RecyclerView r = findViewById(R.id.RecyclerView_ActivityAllUserList);
-        r.setLayoutManager(new LinearLayoutManager(Activity_AllUserInfoList.this));
+        r.setLayoutManager(new LinearLayoutManager(SearchResultActivity.this));
         r.setAdapter(adapter);
     }
 

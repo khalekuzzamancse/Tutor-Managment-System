@@ -13,14 +13,7 @@
         android:theme="@style/Theme.WannaTutor"
         tools:targetApi="31">
         <activity
-            android:name=".Activity_UpdateDate"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Activity_AllUserInfoList"
+            android:name=".SearchResultActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -36,10 +29,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Activity_Why"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".Activity_AboutUs"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -49,10 +38,6 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Activity_ContactSendMessage"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Activity_Become_Tutor"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
