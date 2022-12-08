@@ -68,21 +68,21 @@ public class SearchTutors_Activity extends AppCompatActivity {
             if (subDis.equals(""))
                 subDis = "null";
 
-            Intent intent = new Intent(this, SearchResultActivity.class);
-            intent.putExtra(SearchResultActivity.EXTRA_bloodGroup, blood);
-            intent.putExtra(SearchResultActivity.EXTRA_District, dis);
-            intent.putExtra(SearchResultActivity.EXTRA_SubDistrict, subDis);
-            intent.putExtra(SearchResultActivity.Extra_ComingFrom, "SearchBlood");//Change later--Sojib
+//            Intent intent = new Intent(this, SearchResultActivity.class);
+//            intent.putExtra(SearchResultActivity.EXTRA_bloodGroup, blood);
+//            intent.putExtra(SearchResultActivity.EXTRA_District, dis);
+//            intent.putExtra(SearchResultActivity.EXTRA_SubDistrict, subDis);
+//            intent.putExtra(SearchResultActivity.Extra_ComingFrom, "SearchBlood");//Change later--Sojib
             //  p.setVisibility(View.INVISIBLE);
             //if the user not choosen a bloodGroup then we do not show the list
 
-            if (!divisionTv.getText().toString().isEmpty())
-                startActivity(intent);
-            else {
-                //if user not chosen a bloodGroup but clicked the submit button.
-                //then show the error message
-                DivisionLayout.setError("Please,Choose a Division");
-            }
+//            if (!divisionTv.getText().toString().isEmpty())
+//                startActivity(intent);
+//            else {
+//                //if user not chosen a bloodGroup but clicked the submit button.
+//                //then show the error message
+//                DivisionLayout.setError("Please,Choose a Division");
+//            }
 
 
         });
