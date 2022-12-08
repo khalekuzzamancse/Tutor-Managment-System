@@ -3,26 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/medium_purple"
+    android:elevation="10dp"
+    android:showDividers="end"
+    android:layout_margin="8dp"
+    android:background="#F9F9FA"
     >
-
-    <include
-        android:id="@+id/ActivityScrollable_IncludedToolbar"
-        layout="@layout/toolbar_for_show_profile"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-2dp" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:id="@+id/Activity_showProfile_Profile_Image"
-        android:layout_width="111dp"
-        android:layout_height="91dp"
-        android:elevation="6dp"
-        android:src="@drawable/profile_image"
-        />
 
     <TextView
         android:id="@+id/name_TV"
@@ -32,7 +19,7 @@
         android:layout_marginStart="8dp"
         android:drawableLeft="@drawable/icon_person"
         android:gravity="start"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 
@@ -43,7 +30,7 @@
         android:layout_marginStart="8dp"
         android:drawableLeft="@drawable/icon_email"
         android:gravity="start"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 
@@ -54,7 +41,7 @@
         android:layout_marginStart="8dp"
         android:drawableLeft="@drawable/icon_phone_number"
         android:gravity="start"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 
@@ -65,7 +52,7 @@
         android:layout_marginStart="8dp"
         android:drawableLeft="@drawable/ic_class"
         android:gravity="start"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 
@@ -76,7 +63,7 @@
         android:layout_marginStart="8dp"
         android:drawableLeft="@drawable/ic_subject"
         android:gravity="start"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 
@@ -88,7 +75,7 @@
         android:drawableLeft="@drawable/icon_locaion"
         android:gravity="start"
         android:layout_marginStart="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         />
 

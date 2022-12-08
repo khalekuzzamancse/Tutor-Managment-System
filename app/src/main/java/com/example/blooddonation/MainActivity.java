@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 } else if (id == R.id.search_tutor) {
-                    Intent intent = new Intent(MainActivity.this, SearchTutors_Activity.class);
+                    Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
                     startActivity(intent);
                 } else if (id == R.id.contact_us) {
                     Intent intent = new Intent(MainActivity.this, Activity_ContactSendMessage.class);

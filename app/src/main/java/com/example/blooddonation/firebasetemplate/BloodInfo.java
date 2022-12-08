@@ -87,7 +87,7 @@ public class BloodInfo {
     public void getTutors(CallbackDomainList callbackCustom) {
         this.callbackCustom = callbackCustom;
         CollectionReference cRef = db.collection(collectionName);
-        Task<QuerySnapshot> snapshotTask = cRef.get();
+        Task<QuerySnapshot> snapshotTask = cRef.whereEqualTo("userType","Teacher").get();
         snapshotTask.addOnCompleteListener(callbackQS);
     }
 
