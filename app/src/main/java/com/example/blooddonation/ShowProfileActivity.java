@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class ShowProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
-    TextView nameTV, emailTV, phoneTV, classTV,subjectTV,districtTV;
+    TextView nameTV, emailTV, phoneTV, classTV, subjectTV, districtTV;
     DomainUserInfo userInfo;
     private CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
         @Override
@@ -51,7 +51,11 @@ public class ShowProfileActivity extends AppCompatActivity {
         nameTV.setText("Name :" + info.name);
         emailTV.setText("Email :" + info.email);
         phoneTV.setText("Phone No :" + info.phoneNo);
-        districtTV.setText("District :" + info.district);
+        if (info.userType.equals("Teacher")) {
+            districtTV.setText("District :" + info.district);
+            classTV.setText("Class : " + info.className);
+            subjectTV.setText("Subject :" + info.subject);
+        }
 
     }
 
@@ -69,7 +73,8 @@ public class ShowProfileActivity extends AppCompatActivity {
         emailTV = findViewById(R.id.email_TV);
         phoneTV = findViewById(R.id.phone_TV);
         districtTV = findViewById(R.id.district_TV);
-        classTV=findViewById(R.id)
+        classTV = findViewById(R.id.class_tv);
+        subjectTV = findViewById(R.id.subject_tv);
     }
 
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
@@ -80,14 +85,11 @@ public class ShowProfileActivity extends AppCompatActivity {
 
     }
 
-    //@Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.Activity_ProifleMenuEditProfile)
-//            startActivity(new Intent(this, EditProfileActivity.class));
-//        else if (id == R.id.Activity_ProifleMenuDonatDateUpdate)
-//            startActivity(new Intent(this, UpdateDonateDateActvity.class));
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.Activity_ProifleMenuEditProfile)
+            startActivity(new Intent(this, EditProfileActivity.class));
+        return super.onOptionsItemSelected(item);
+    }
 }

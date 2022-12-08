@@ -24,7 +24,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Activity_UpdateProfile"
+            android:name=".EditProfileActivity"
             android:exported="false"
             android:parentActivityName=".ShowProfileActivity" />
         <activity

@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         setToolbar();
         loginBTN.setOnClickListener(view -> {
             getUserInfo();
-            new FirebaseAuthCustom().signIn(emailStr,passwordStr);
-            startActivity(new Intent(this,ShowProfileActivity.class));
+            new FirebaseAuthCustom().signIn(emailStr, passwordStr);
+            startActivity(new Intent(this, ShowProfileActivity.class));
         });
 
     }

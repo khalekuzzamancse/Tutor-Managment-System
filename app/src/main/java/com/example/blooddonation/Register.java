@@ -176,7 +176,7 @@ public class Register extends AppCompatActivity {
         data.put("email", emailStr);
         data.put("userName", userNameStr);
         data.put("userType", userType);
-        data.put("class", classNameStr);
+        data.put("className", classNameStr);
         data.put("subject", subjectStr);
         data.put("district", districtStr);
         data.put("password", passwordStr);
