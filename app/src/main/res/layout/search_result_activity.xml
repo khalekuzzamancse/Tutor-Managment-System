@@ -19,7 +19,7 @@ android:orientation="vertical"
 >
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        app:queryHint="Search Food"
+        app:queryHint="Search subject"
         android:visibility="gone"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
