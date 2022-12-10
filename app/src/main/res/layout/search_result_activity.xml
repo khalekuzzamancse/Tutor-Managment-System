@@ -12,10 +12,19 @@ android:orientation="vertical"
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="45dp" />
 <LinearLayout
+android:orientation="vertical"
     android:layout_marginTop="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 >
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        app:queryHint="Search Food"
+        android:visibility="gone"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:background="#A9E8E2"
+        android:layout_height="40dp" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"

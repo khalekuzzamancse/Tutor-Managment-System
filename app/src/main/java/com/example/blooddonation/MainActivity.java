@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.blooddonation.firebasetemplate.CallbackUserProfile;
 import com.example.blooddonation.firebasetemplate.DomainUserInfo;
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FirebaseAuthCustom currentUser;
     DomainUserInfo userInfo;
-
+    TextView search;
     CallbackUserProfile callbackUserProfile = new CallbackUserProfile() {
         @Override
         public void getProfile(DomainUserInfo profile) {
@@ -47,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
 
         //getting the login user profile info,
 
+
+
+        search.setOnClickListener(view -> {
+            Intent intent=new Intent(this,SearchResultActivity.class);
+            SearchResultActivity.from="Main";
+            startActivity(intent);
+        });
+
+
         FirebaseAuthCustom authCustom = new FirebaseAuthCustom();
         authCustom.getUserInfo(callbackUserProfile);
 
@@ -54,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.login)
-                    item.setVisible(false);
                 if (id == R.id.login) {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -114,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.MainActivity_DrawerLayout);
         navigationView = findViewById(R.id.ActivityMain_NavDrawer_NavigationView);
         currentUser = new FirebaseAuthCustom();
+        search=findViewById(R.id.All_DonorList);
     }
     private void setToolbar() {
         toolbar = findViewById(R.id.ActivityMain_ToolBar);

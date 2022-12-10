@@ -3,74 +3,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="25dp"
     android:orientation="vertical"
-    tools:layout_editor_absoluteX="50dp"
-    tools:layout_editor_absoluteY="7dp">
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_toolbar_for_non_home_activity">
+    </include>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="50dp"
+        android:background="@drawable/main_bg"
+        tools:layout_editor_absoluteY="7dp">
 
-        <TextView
-            android:id="@+id/SearchBloodMain_Activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_about_us"
-            android:backgroundTint="#FFEB3B"
-            android:drawableLeft="@drawable/icon_search"
-            android:elevation="8dp"
-            android:gravity="center"
-            android:padding="10dp"
 
-            android:text="Search Tutors"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/SearchBloodMain_Activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/background_about_us"
+                android:backgroundTint="#FFEB3B"
+                android:drawableLeft="@drawable/icon_search"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:padding="10dp"
+
+                android:text="Search Tutors"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/All_DonorList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_about_us"
+                android:backgroundTint="#FFEB3B"
+                android:drawableLeft="@drawable/icon_list"
+                android:drawableTint="@color/black"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="All Tutor List"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:background="@drawable/background_about_us"
+                android:backgroundTint="#FFEB3B"
+                android:drawableLeft="@drawable/icon_helpline"
+                android:drawableTint="@color/black"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Help Line"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/All_DonorList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_about_us"
-            android:backgroundTint="#FFEB3B"
-            android:drawableLeft="@drawable/icon_list"
-            android:drawableTint="@color/black"
-            android:elevation="8dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="All Tutor List"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_about_us"
-            android:backgroundTint="#FFEB3B"
-            android:drawableLeft="@drawable/icon_helpline"
-            android:drawableTint="@color/black"
-            android:elevation="8dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Help Line"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-    </LinearLayout>
-
 </LinearLayout>

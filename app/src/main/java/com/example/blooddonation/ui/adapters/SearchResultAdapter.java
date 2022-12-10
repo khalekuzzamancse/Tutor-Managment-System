@@ -77,6 +77,10 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public int getItemCount() {
         return list.size();
     }
+    public void setFilterList(List<DomainUserInfo> L) {
+        this.list = L;
+        notifyDataSetChanged();
+    }
 
     public class Viewholder extends RecyclerView.ViewHolder {
         TextView nameTV, emailTV, phoneTV, classTV, subjectTV, districtTV;

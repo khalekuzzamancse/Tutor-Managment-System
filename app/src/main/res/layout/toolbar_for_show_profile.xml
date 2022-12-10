@@ -16,6 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/menu_edit_profile"
-        android:background="#BEF81A5A"
+        android:background="#3F51B5"
         />
 </com.google.android.material.appbar.AppBarLayout>
